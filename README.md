@@ -25,10 +25,15 @@ This plugin is meant to be easy to configure, providing custom permission nodes,
 
 #### Command Aliases: lunar, lunarmods, staffmods
 > SubCommands
+
 > check &lt;player&gt; - See a list of mods that a player currently has enabled
+
 > enable &lt;mod&gt; - Enable a staff mod, sending the packet to yourself
+
 > disable &lt;mod&gt; - Enable a staff mod, sending the packet to yourself
+
 > forceenable &lt;player&gt; &lt;mod&gt; - Enable a staff mod for someone else, sending the packet to them
+
 > forcedisable &lt;player&gt; &lt;mod&gt; - Enable a staff mod for someone else, sending the packet to them
 
 ## Permissions
