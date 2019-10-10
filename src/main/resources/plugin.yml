@@ -1,0 +1,3 @@
+name: LunarStaffPlugin
+version: ${project.version}
+main: club.bigpp.lunar.LunarStaffPlugin

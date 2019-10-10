@@ -1,0 +1,141 @@
+# This is the only configuration file for the Lunar Staff Mod plugin.
+# This plugin will allow users to send staff mod packets for use with the Lunar Client.
+# It is built as a way to not require an entire Lunar Client API just to enable a few features.
+# Created by Remail (Bytes) https://github.com/remailmc
+
+# Mods
+# These are the mod ids that players can use,
+# they may change in the future but there is currently 4
+
+mods:
+  - xray
+  - noclip
+  - bunnyhop
+  - nametags
+
+# Permissions
+# These are the permission node overwrites, these options will be used instead of the default permissions.
+# (default permission) - description
+
+permission:
+  # (lunar.mod.<mod>) - These are individual permissions for each mod, users must have permission to enable each specific mod or force another player to
+  mods:
+    xray: lunar.mod.xray
+    noclip: lunar.mod.noclip
+    bunnyhop: lunar.mod.bunnyhop
+    nametags: lunar.mod.nametags
+
+  # (lunar.auto) - If a player has this permission, they will enable all mods they have permission for, on login.
+  auto: lunar.auto
+
+  # (lunar.check) - Check Command ( /lunar check <player> )
+  check: lunar.check
+
+  # (lunar.toggle) - Toggle Command ( /lunar <enable|disable> <mod> )
+  toggle: lunar.toggle
+
+  # (lunar.force) - Force Command ( /lunar <forceenable|forcedisable> <player> <mod> )
+  force: lunar.force
+
+  # (lunar.notify) - Users with this permission will be sent a message whenever a player enables / disables a mod
+  notify: lunar.notify
+
+  # (lunar.command) - Required to use any plugin commands (if lacking, response is messages.permission)
+  command: lunar.command
+
+# Messages
+# These are the messages that the plugin will send to users.
+# All messages support '&' for color codes.
+# Some messages have arguments, these can be used in by their index in curly brackets
+# Example: (reversing order to show its valid)
+# Arguments: UUID, PlayerName
+# 'Player UUID is {1}, Player Name is {0}'
+
+messages:
+  # Message sent to a player when they join and mods are enabled (requires permission lunar.auto)
+  # {0} - Amount of mods enabled
+  auto: 'You have enabled &b{0} &fstaff mods'
+
+  # Response when a player lacks the 'command' permission
+  permission: 'Unknown command. Type "/help" for help.'
+
+  # Command responses for /lunar check
+  check:
+    # First line of response
+    # {0} - Player name
+    # {1} - Amount of mods enabled
+    success: '&b{0} &fcurrently has &b{1} &fstaff mods enabled'
+
+    # New line for each mod
+    # {0} - Mod id
+    mod: ' &7- &b{0}'
+
+    # Response when the target player is offline
+    offline: '&cThat player is not online'
+
+    # Response when a player lacks the 'check' permission
+    permission: '&cYou don''t have permission to do that'
+
+  # Command responses for /lunar <enable|disable> <mod>
+  toggle:
+    # Response when successful
+    # {0} - toggle.enabled / toggle.disabled
+    # {1} - Mod id
+    success: '&fThe lunar staff mod &b{1} &fhas been {0}'
+
+    # Response when the mod doesn't exist
+    exist: '&cThat mod does not exist'
+
+    # Format for enable/disable (used in toggle.success, notify.toggle and notify.auto)
+    enabled: '&aenabled'
+    disabled: '&cdisabled'
+
+    # When the sender lacks permission for the specific mod
+    modperm: '&cYou don''t have permission to use that mod'
+
+    # Response when a player lacks the 'toggle' permission
+    permission: '&cYou don''t have permission to do that'
+
+  # Command responses for /lunar <forceenable|forcedisable> <player> <mod>
+  force:
+    # Response when successful
+    # {0} - Target name
+    # {1} - force.enabled / force.disabled
+    # {2} - Mod id
+    success: 'You have forced &b{0} to {1} &b{2}'
+
+    # Response when the mod doesn't exist
+    exist: '&cThat mod does not exist'
+
+    # Response when the target player is offline
+    offline: '&cThat player is not online'
+
+    # Format for enable/disable (used in force.success and notify.force)
+    enable: '&aenable'
+    disable: '&cdisable'
+
+    # When the sender lacks permission for the specific mod
+    modperm: '&cYou don''t have permission to force that mod'
+
+    # Response when a player lacks the 'force' permission
+    permission: '&cYou don''t have permission to do that'
+
+  # Notify messages, sent to all users with the 'notify' permission
+  notify:
+    # When a user enables multiple mods on login
+    # {0} - Player name
+    # {2} - Amount of mods enabled
+    auto: '&7[Lunar] &b{0} &fhas enabled &b{1} &fmods on login'
+
+    # When a user forces another player to toggle a mod
+    # {0} - Sender name
+    # {1} - Target name
+    # {2} - force.enable / force.disable
+    # {4} - Mod id
+    force: '&7[Lunar] &e{0} &fforced &b{1} &fto {2} &fthe mod &b{3}'
+
+    # When a user enables / disables a mod
+    # {0} - Player name
+    # {1} - toggle.enabled / toggle.disabled
+    # {2} - Mod id
+    toggle: '&7[Lunar] &b{0} {1} &b{2}'
