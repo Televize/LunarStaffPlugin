@@ -4,6 +4,7 @@ This plugin does not contain an api and is intended to be interacted with throug
 
 Requirements:
 > Spigot 1.7.x - 1.8.x
+
 > Lunar Client
 
 This plugin is not supported by or affiliated with [Lunar](https://lunar.gg/) or [Moonsworth]([https://moonsworth.com/), do not bother them for support with this plugin.
@@ -17,13 +18,17 @@ The plugin configuration file is commented with descriptions for each node.
 This plugin is meant to be easy to configure, providing custom permission nodes, messages and mods.
 
 #### The config contains 3 sections:
+
 > Mods
+
 > Messages
+
 > Permissions
 
 ## Commands
 
 #### Command Aliases: lunar, lunarmods, staffmods
+
 > SubCommands
 
 > check &lt;player&gt; - See a list of mods that a player currently has enabled
